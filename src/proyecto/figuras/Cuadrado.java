@@ -38,7 +38,7 @@ public class Cuadrado implements Figura {
 
     @Override
     public String getMedidas() {
-        return String.valueOf(lado) + " x " + String.valueOf(lado);
+        return lado + " x " + lado;
     }
 
     @Override

@@ -5,6 +5,7 @@
 package proyecto.figuras;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,12 +28,11 @@ class CargadorFiguras {
     }
 
     //EXTRAE DATOS DE UN ARCHIVO DE TEXTO, LOS PROCESA Y RELLENA UNA LISTA DE TIPO FIGURA
-    public List<Figura> getAll() {
+    public List<Figura> getAll() throws FileNotFoundException {
         List<Figura> listaFiguras = new ArrayList<>();
-        try {
+        FileReader archivo = new FileReader(rutaArchivo);
+        try (BufferedReader lector = new BufferedReader(archivo);){
             String lectorTemp;
-            FileReader archivo = new FileReader(rutaArchivo);
-            BufferedReader lector = new BufferedReader(archivo);
             while ((lectorTemp = lector.readLine()) != null) {
                 String[] textoLeido = lectorTemp.split(":");
                 switch (textoLeido[1]) {
@@ -52,6 +52,7 @@ class CargadorFiguras {
                         Rectangulo rc = new Rectangulo(Integer.parseInt(textoLeido[0]), Double.parseDouble(textoLeido[2]), Double.parseDouble(textoLeido[3]));
                         listaFiguras.add(rc);
                         break;
+                    default:
                 }
 
             }

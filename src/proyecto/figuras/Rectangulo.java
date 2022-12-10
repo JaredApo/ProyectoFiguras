@@ -40,9 +40,7 @@ public class Rectangulo implements Figura {
 
     @Override
     public String getMedidas() {
-        String lado1 = String.valueOf(base);
-        String lado2 = String.valueOf(altura);
-        return lado1 + " x " + lado2;
+        return base + " x " + altura;
     }
 
     @Override
